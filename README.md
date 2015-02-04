@@ -4,7 +4,9 @@ Combines RWD Image Maps, Maphilight, and Zoom into 1 solution. Optional table in
 ---
 
 ## Usage:
-Simply pass in the Image for the Responsive, Hilight, and Zoom features
+Simply pass in the Image for the Responsive, Hilight, and Zoom features<br>
+  <pre>• Double-click Image Map to Zoom<br>
+• Hold down Ctrl key to select multiple</pre>
 
 ``` html
 <link href="css/map-trifecta.css" rel="stylesheet" /> <!--Needed for Zoom and img-->
