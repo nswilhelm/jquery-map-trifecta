@@ -1,0 +1,44 @@
+
+.zoom {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+}
+
+    .zoom p {
+        position: absolute;
+        top: 3px;
+        right: 28px;
+        color: #555;
+        font: bold 13px/1 sans-serif;
+    }
+
+    /* magnifying glass icon */
+    .zoom:after {
+        content: '';
+        display: block;
+        width: 33px;
+        height: 33px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        opacity: 0.3;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAhCAMAAABgOjJdAAAAOVBMVEUAAAD///8AAAAAAAAVFRUpKSk8PDxPT09gYGBxcXGCgoKSkpKwsLC+vr7MzMzZ2dnm5ubz8/P///+LgQr7AAAAE3RSTlMAAFSGiYyOkZSXmp2ipairrbCz61ViJgAAAJ9JREFUeF6tz70Og0AMA2CfgaPl987v/7AFlqgemqWWsn2OZJRSOPzKLcBUgKlwUuf6LYzUJqlVEwgydfXjumoiyKZzHMZTm4kgTXe7qpsI0h8xSSaC7M//TbuJILN0rIf0chHkrSfnGMLJtKzLq1/EhI2uD3HhZHfhpK0mnNgWI4kAUwGmAkwFmAowFWAqwFSAqQBTAaYCTAWIkuUf4gNsjQljXxt9tgAAAABJRU5ErkJggg==') /*icon.png*/;
+    }
+
+    .zoom img {
+        display: block;
+    }
+
+        .zoom img::selection {
+            background-color: transparent;
+        }
+
+
+div#imgShown, img, canvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
