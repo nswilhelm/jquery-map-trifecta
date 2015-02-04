@@ -7,6 +7,9 @@ Combines RWD Image Maps, Maphilight, and Zoom into 1 solution. Optional table in
 Simply pass in the Image for the Responsive, Hilight, and Zoom features
 
 ``` html
+<link href="css/map-trifecta.css" rel="stylesheet" /> <!--Needed for Zoom and img-->
+<script src="js/jquery.map-trifecta.min.js"></script>
+
 <img src="images/shapes.png" usemap="#shapesMap">
 <map name="shapesMap">
   <area coords="5,136,80,9" alt="Triangle" href="#" shape="poly" />
