@@ -20,6 +20,6 @@ $("img[usemap]").mapTrifecta();
 ```
 
 ## With Table:
-You can have a table (shown in example) respond with the Image Map Hilight.
-To do this just have the **<tr>** of the table and the '<area>' of the map include a 'data-mapid' parameter.
-Matching Id's with Hilight.
+You can have a table (shown in index.html) respond with the Image Map Hilight.<br>
+To do this just have the `<tr>` of the table and the `<area>` of the map include a **data-mapid** parameter.
+Matching id's with Hilight.
