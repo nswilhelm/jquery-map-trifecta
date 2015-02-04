@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Replacement Parts</title>
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/mapTrifecta.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <!--MAIN CONTAINER -->
+    <div class="container" id="main">
+        <div class="row">
+
+            <!--IMAGE MAP-->
+            <div class="col-lg-5 col-lg-push-7">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Shapes Image</h4>
+                    </div>
+                    <div class="panel-body">
+                        <center>
+                            <img id="myImageMap" src="images/shapes.png" usemap="#shapesMap">
+
+                            <map name="shapesMap">
+                                <area data-mapid="1" coords="5,136,80,9,152,135" alt="Triangle" href="#" shape="poly" />
+                                <area data-mapid="2" coords="177,134,179,7,307,8,308,134" alt="Square" href="#" shape="poly" />
+                                <area data-mapid="3" coords="358,123,353,119,342,104,334,88,333,67,339,46,352,26,379,10,403,7,420,13,438,22,448,33,454,43,459,61,462,77,459,93,449,112,437,122,426,128,414,134,393,135,376,132" alt="Circle" href="#" shape="poly" />
+                            </map>
+                        </center>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--TABLE ROWS-->
+            <div class="col-lg-7 col-lg-pull-5">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Shapes Table</h4>
+                    </div>
+
+                    <div class="panel-body">
+                        <!--Parts / Assemblies-->
+                        <table id="myTable" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr data-mapid="1">
+                                    <td>Triangle</td>
+                                </tr>
+
+                                <tr data-mapid="2">
+                                    <td>Square</td>
+                                </tr>
+
+                                <tr data-mapid="3">
+                                    <td>Circle</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+    </div>
+
+
+    <div id="scripts">
+
+        <!-- 3rd party libraries -->
+        <script src="js/jquery-1.11.1.min.js"></script>
+
+        <!--For Responsive Image Map-->
+        <script src="js/jquery.mapTrifecta.min.js"></script>
+        <script>
+            //setup Responsive, Hilight, Zoom for Image Map & Table
+            $().mapTrifecta("img[usemap]#myImageMap", "table#myTable");
+        </script>
+
+    </div>
+
+</body>
+</html>
