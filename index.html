@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
     <title>Trifecta Example</title>
-
-    <link href="css/bootstrap-3.3.1.css" rel="stylesheet" />
-    <link href="css/map-trifecta.css" rel="stylesheet" />
+    <link href="css/bootstrap-3.3.1.min.css" rel="stylesheet" />
+    <link href="css/map-trifecta.css" rel="stylesheet" /> <!--Needed for Zoom and img-->
 
 </head>
 <body>
@@ -48,7 +47,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-
                                 <tr data-mapid="1">
                                     <td>Triangle</td>
                                 </tr>
@@ -76,11 +74,10 @@
         <!-- 3rd party libraries -->
         <script src="js/jquery-1.11.1.min.js"></script>
 
-        <!--For Responsive Image Map-->
+        <!--For Responsive, Hilight, Zoom for Image Map & Table -->
         <script src="js/jquery.map-trifecta.min.js"></script>
         <script>
-            //setup Responsive, Hilight, Zoom for Image Map & Table
-            $().mapTrifecta("img[usemap]#myImageMap", "table#myTable");
+            $("img[usemap]").mapTrifecta();
         </script>
 
     </div>
