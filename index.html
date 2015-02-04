@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Replacement Parts</title>
+    <title>Trifecta Example</title>
 
-    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/mapTrifecta.css" rel="stylesheet" />
+    <link href="css/bootstrap-3.3.1.css" rel="stylesheet" />
+    <link href="css/map-trifecta.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -22,7 +22,6 @@
                     <div class="panel-body">
                         <center>
                             <img id="myImageMap" src="images/shapes.png" usemap="#shapesMap">
-
                             <map name="shapesMap">
                                 <area data-mapid="1" coords="5,136,80,9,152,135" alt="Triangle" href="#" shape="poly" />
                                 <area data-mapid="2" coords="177,134,179,7,307,8,308,134" alt="Square" href="#" shape="poly" />
@@ -42,7 +41,6 @@
                     </div>
 
                     <div class="panel-body">
-                        <!--Parts / Assemblies-->
                         <table id="myTable" class="table table-hover">
                             <thead>
                                 <tr>
@@ -79,7 +77,7 @@
         <script src="js/jquery-1.11.1.min.js"></script>
 
         <!--For Responsive Image Map-->
-        <script src="js/jquery.mapTrifecta.min.js"></script>
+        <script src="js/jquery.map-trifecta.min.js"></script>
         <script>
             //setup Responsive, Hilight, Zoom for Image Map & Table
             $().mapTrifecta("img[usemap]#myImageMap", "table#myTable");
