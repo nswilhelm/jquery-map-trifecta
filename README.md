@@ -24,6 +24,33 @@ Simply pass in the Image for the Responsive, Hilight, and Zoom features<br>
 
 ```js
 $("img[usemap]").mapTrifecta();
+
+Defaults:
+$("img[usemap]").mapTrifecta({
+        zoom: true,
+        table: true,
+        fill: true,
+        fillColor: 'FF0000',
+        fillOpacity: 0.1,
+        stroke: true,
+        strokeColor: 'FF0000',
+        strokeOpacity: 1,
+        strokeWidth: 1,
+        fade: true,
+        alwaysOn: false,
+        neverOn: false,
+        groupBy: false,
+        wrapClass: true,
+        // plenty of shadow:
+        shadow: false,
+        shadowX: 0,
+        shadowY: 0,
+        shadowRadius: 10,
+        shadowColor: '000000',
+        shadowOpacity: 0.8,
+        shadowPosition: 'outside',
+        shadowFrom: false
+    });
 ```
 
 ## With Table:

@@ -1,6 +1,7 @@
 // Allows Image Maps to be used in a Responsive Design, with Hilighting, and Zooming capabilities
 // Global Var
 var $imageMap;
+var settings;
 
 /*
 * rwdImageMaps jQuery plugin v1.4
@@ -357,7 +358,6 @@ var $imageMap;
             if (img.hasClass('maphilighted')) {
                 // We're redrawing an old map, probably to pick up changes to the options.
                 // Just clear out all the old stuff.
-                console.log('has class maphilighted');
                 var wrapper = img.parent();
                 img.insertBefore(wrapper);
                 wrapper.remove();
@@ -768,20 +768,36 @@ var partsArr = [];
 
         // Hilight and keep selected
         $('area, tr').on('click', function (e) {
-            var id = $(this).attr('data-mapid');
 
-            if (e.ctrlKey) {
-                // Add to Array, multiple selection
-                partsArr.push(id);
-                selectRowAndPart(id, true);
-            }
-            else {
-                // Remove all rom Array, singular selection
-                removeAllSelectedRowsAndParts();
-                selectRowAndPart(id, true);
+            var $parent = $(e.target).parent();
+            if (!$parent.is('a')) {
+                var id = $(this).attr('data-mapid');
 
-                partsArr = [];
-                partsArr.push(id);
+                if (e.ctrlKey) {
+                    // Add to Array, multiple selection
+                    var index = jQuery.inArray(id, partsArr);
+                    if (index > -1) {
+                        // remove part
+                        partsArr.splice(index, 1);
+                        removeAllSelectedRowsAndParts();
+                        partsArr.forEach(function (item) {
+                            selectRowAndPart(item, true);
+                        });
+                    }
+                    else {
+                        // add part
+                        partsArr.push(id);
+                        selectRowAndPart(id, true);
+                    }
+                }
+                else {
+                    // Remove all rom Array, singular selection
+                    removeAllSelectedRowsAndParts();
+                    selectRowAndPart(id, true);
+
+                    partsArr = [];
+                    partsArr.push(id);
+                }
             }
 
             return false;
@@ -814,24 +830,57 @@ function selectRowAndPart(id, select) {
 // Created By: Nicholas S Wilhelm
 // Sets up Responsive, Hilight, Zoom
 (function ($) {
-    $.fn.mapTrifecta = function () {
+    var defaults = {
+        zoom: true,
+        table: true,
+
+        /*** MapLight ***/
+        fill: true,
+        fillColor: 'FF0000',
+        fillOpacity: 0.1,
+        stroke: true,
+        strokeColor: 'FF0000',
+        strokeOpacity: 1,
+        strokeWidth: 1,
+        fade: true,
+        alwaysOn: false,
+        neverOn: false,
+        groupBy: false,
+        wrapClass: true,
+        // plenty of shadow:
+        shadow: false,
+        shadowX: 0,
+        shadowY: 0,
+        shadowRadius: 10,
+        shadowColor: '000000',
+        shadowOpacity: 0.8,
+        shadowPosition: 'outside',
+        shadowFrom: false
+    };
+
+    $.fn.mapTrifecta = function (options) {
 
         $imageMap = this;
+        settings = $.extend({}, defaults, options || {}),
 
         // Set up Image Map
-        $imageMap.maphilight();
+        $imageMap.maphilight(settings);
         $imageMap.rwdImageMaps();
 
         // Set up Zoom
-        $imageMap.parent().wrap("<span id='toZoom' class='zoom'></span>");
-        $('#toZoom').zoom({ on: 'dblclick' }).removeClass("zoom");
+        if (settings.zoom) {
+            $imageMap.parent().wrap("<span id='toZoom' class='zoom'></span>");
+            $('#toZoom').zoom({ on: 'dblclick' }).removeClass("zoom");
 
-        // Fix Zoom width
-        var width = $imageMap.width();
-        $('#toZoom').width(width);
+            // Fix Zoom width
+            var width = $imageMap.width();
+            $('#toZoom').width(width);
+        }
 
         // Set up Table
-        $().setMapTable();
+        if (settings.table) {
+            $().setMapTable();
+        }
 
         return this;
     };
@@ -840,15 +889,20 @@ function selectRowAndPart(id, select) {
 
 // This keeps the Hilight moving with the Image Map during browser resizing
 jQuery(window).bind('resize', function (e) {
-    window.resizeEvt;
-    jQuery(window).resize(function () {
-        clearTimeout(window.resizeEvt);
-        window.resizeEvt = setTimeout(function () {
-            $imageMap.maphilight();
+    
+        window.resizeEvt;
+        jQuery(window).resize(function () {
+            clearTimeout(window.resizeEvt);
+            window.resizeEvt = setTimeout(function () {
+                try {
+                    $imageMap.maphilight(settings);
 
-            var width = $imageMap.width();
-            $('#toZoom').width(width);
-
-        }, 10);
-    });
+                    var width = $imageMap.width();
+                    $('#toZoom').width(width);
+                } catch (e) {
+                    console.error(e.message);
+                }
+            }, 10);
+        });
+    
 });
