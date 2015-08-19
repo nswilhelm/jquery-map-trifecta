@@ -41,7 +41,6 @@ $("img[usemap]").mapTrifecta({
         neverOn: false,
         groupBy: false,
         wrapClass: true,
-        // plenty of shadow:
         shadow: false,
         shadowX: 0,
         shadowY: 0,
