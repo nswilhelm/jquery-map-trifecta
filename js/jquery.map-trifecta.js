@@ -489,7 +489,6 @@ var settings;
                 .css("margin-left", "auto")
                 .css("margin-right", "auto")
                 .css("position", "relative")
-                .css("", "")
                 .addClass('map')
                 .addClass('maphilighted');
         });
